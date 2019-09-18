@@ -8,13 +8,18 @@ output: github_document
 # PROBLEM 1
 
 ## Create a Data Frame
+
 ```{r}
 library (tidyverse)
 ```
 
-### Take a random sample of 8 from a standard normal distribution. 
+### The data frame consists of:
+* A random sample of size 8 from a standard Normal distribution
+* A logical vector indicating whether elements of the sample are greater than 0
+* A character vector of length 8
+* A factor vector of length 8, with 3 different factor levels: "seed", "pit", and "peel"
 
-```{r}
+```{r }
 Prob1_df = tibble(
   sample = rnorm(8),
   vec_logical = c(sample > 0), 
@@ -23,7 +28,25 @@ Prob1_df = tibble(
 )
 ```
 
-## Mean of Variable in the Dataframe
+## Mean of Variables in the Data Frame
+
+```{r}
+mean(pull(Prob1_df, sample))
+mean(pull(Prob1_df, vec_logical))
+mean(pull(Prob1_df, vec_character))
+mean(pull(Prob1_df, vec_factor))
+```
+
+The mean code only displays a result for the mean of the sample and logical vector. It does not display a mean for the character vector or factor vector, as they are not tied to numbers. 
+
+## Convert Variables
+
+```{r eval = FALSE}
+as.numeric(pull(Prob1_df, sample))
+as.numeric(pull(Prob1_df, vec_logical))
+as.numeric(pull(Prob1_df, vec_character))
+as.numeric(pull(Prob1_df, vec_factor))
+```
 
 
 # PROBLEM 2
