@@ -1,0 +1,10 @@
+---
+title: "p8105_hw1_niz2000"
+author: "Nora Zakaria"
+date: "September 20, 2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
