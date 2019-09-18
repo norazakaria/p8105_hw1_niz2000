@@ -5,6 +5,25 @@ date: "September 20, 2019"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# PROBLEM 1
+
+## Create a Data Frame
+```{r}
+library (tidyverse)
 ```
+
+### Take a random sample of 8 from a standard normal distribution. 
+
+```{r}
+Prob1_df = tibble(
+  sample = rnorm(8),
+  vec_logical = c(sample > 0), 
+  vec_character = c("apple", "banana", "cherry", "date", "elderberry", "fig", "guava", "honeydew"),
+  vec_factor = factor(c("seed", "peel", "pit", "pit", "seed", "peel", "seed", "seed")),
+)
+```
+
+## Mean of Variable in the Dataframe
+
+
+# PROBLEM 2
