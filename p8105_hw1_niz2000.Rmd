@@ -9,6 +9,8 @@ output: github_document
 
 ## Create a Data Frame
 
+In order to create a data frame, the tidyverse package must be loaded.
+
 ```{r}
 library (tidyverse)
 ```
@@ -17,7 +19,7 @@ library (tidyverse)
 * A random sample of size 8 from a standard Normal distribution
 * A logical vector indicating whether elements of the sample are greater than 0
 * A character vector of length 8
-* A factor vector of length 8, with 3 different factor levels: "seed", "pit", and "peel"
+* A factor vector of length 8, and 3 different factor levels: "seed", "pit", and "peel"
 
 ```{r }
 set.seed(7)
@@ -30,7 +32,9 @@ Prob1_df = tibble(
 )
 ```
 
-## Trying to Take the Mean of Variables in the Data Frame
+## Mean of Variables in the Data Frame
+
+In this next code chunk, an attempt was made to take the mean of each variable in the dataframe Prob1_df. 
 
 ```{r}
 mean(pull(Prob1_df, sample))
@@ -79,9 +83,10 @@ Prob2_df = tibble(
   x = rnorm(500),
   y = rnorm(500),
   vec_log = c(x + y > 1),
-  vec_num = c(vec_log),
-  vec_fac = c(vec_log)
+  vec_num = as.numeric(pull(Prob2_df, vec_log)),
+  vec_fac = as.factor(pull(Prob2_df, vec_log))
 )
+head(Prob2_df)
 ```
 
 ## Vector Description
