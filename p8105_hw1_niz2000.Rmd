@@ -1,7 +1,7 @@
 ---
 title: "p8105_hw1_niz2000"
 author: "Nora Zakaria"
-date: "2019-09-20 20"
+date: "2019-09-20"
 output: github_document
 ---
 
@@ -30,7 +30,7 @@ Prob1_df = tibble(
 )
 ```
 
-## Try to Take the Mean of Variables in the Data Frame
+## Trying to Take the Mean of Variables in the Data Frame
 
 ```{r}
 mean(pull(Prob1_df, sample))
@@ -107,3 +107,11 @@ ggplot(Prob2_df, aes(x = x, y = y, color = vec_num)) + geom_point()
 ```{r yx_scatter_factor}
 ggplot(Prob2_df, aes(x = x, y = y, color = vec_fac)) + geom_point()
 ```
+
+The salmon dots on the scatterplots indicate false. The blue dots on the scatterplots indicate true.
+
+## Export The Logical Scatterplot
+```{r yx_scatter_logical}}
+ggsave("yx_scatter_logical.pdf")
+```
+
