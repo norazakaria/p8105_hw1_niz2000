@@ -83,3 +83,10 @@ Prob2_df = tibble(
   vec_fac = c(vec_log)
 )
 ```
+
+## Vector Description
+* There are `r nrow(Prob2_df)` rows and `r ncol(Prob2_df)` columns in the dataset.
+* The mean of the sample of x is `r mean(pull(Prob2_df, x))`
+* The median of the sample of x is `r median(pull(Prob2_df, x))`
+* The standard deviation of the sample of x is `r sd(pull(Prob2_df, x))`
+* The proportion of cases for which x + y > 1 is `r sum(pull(Prob2_df, vec_log))/500`
