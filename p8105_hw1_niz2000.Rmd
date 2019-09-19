@@ -72,4 +72,14 @@ as.numeric(as.factor(pull(Prob1_df, vec_logical)))*(pull(Prob1_df, sample))
 
 ## Create a Data Frame
 
+```{r}
+set.seed(7)
+
+Prob2_df = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  vec_log = c(x + y > 1),
+  vec_fac = c(vec_log)
+)
+```
 
