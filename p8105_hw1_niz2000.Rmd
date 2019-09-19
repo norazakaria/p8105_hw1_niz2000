@@ -79,7 +79,7 @@ Prob2_df = tibble(
   x = rnorm(500),
   y = rnorm(500),
   vec_log = c(x + y > 1),
+  vec_num = c(vec_log),
   vec_fac = c(vec_log)
 )
 ```
-
