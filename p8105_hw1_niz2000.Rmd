@@ -71,3 +71,5 @@ as.numeric(as.factor(pull(Prob1_df, vec_logical)))*(pull(Prob1_df, sample))
 # PROBLEM 2
 
 ## Create a Data Frame
+
+
