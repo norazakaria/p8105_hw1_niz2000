@@ -1,7 +1,7 @@
 ---
 title: "p8105_hw1_niz2000"
 author: "Nora Zakaria"
-date: "September 20, 2019"
+date: "2019-09-20 20"
 output: github_document
 ---
 
@@ -20,6 +20,8 @@ library (tidyverse)
 * A factor vector of length 8, with 3 different factor levels: "seed", "pit", and "peel"
 
 ```{r }
+set.seed(7)
+
 Prob1_df = tibble(
   sample = rnorm(8),
   vec_logical = c(sample > 0), 
@@ -28,7 +30,7 @@ Prob1_df = tibble(
 )
 ```
 
-## Mean of Variables in the Data Frame
+## Try to Take the Mean of Variables in the Data Frame
 
 ```{r}
 mean(pull(Prob1_df, sample))
@@ -48,5 +50,24 @@ as.numeric(pull(Prob1_df, vec_character))
 as.numeric(pull(Prob1_df, vec_factor))
 ```
 
+You can only convert the sample, logical vector, and factor vector variables from the data frame to numberic variables. The character variable could not be converted to numeric, as it did not consist of numbers, and did not have assigned numeric indices.
+
+## Convert the Logical Vector
+
+### The logical vector will be converted to:
+* A numeric vector, and multiply the random sample by the result
+* A factor vector, and multiply the random sample by the result
+* A factor vector, and the to a numeric vector, and multiply the random sample by the result
+
+```{r}
+as.numeric(pull(Prob1_df, vec_logical))*(pull(Prob1_df, sample))
+
+as.factor(pull(Prob1_df, vec_logical))*(pull(Prob1_df, sample))
+
+as.numeric(as.factor(pull(Prob1_df, vec_logical)))*(pull(Prob1_df, sample))
+```
+
 
 # PROBLEM 2
+
+## Create a Data Frame
