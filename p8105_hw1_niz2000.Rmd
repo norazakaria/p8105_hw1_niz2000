@@ -18,17 +18,17 @@ library (tidyverse)
 ### The data frame consists of:
 * A random sample of size 8 from a standard Normal distribution
 * A logical vector indicating whether elements of the sample are greater than 0
-* A character vector of length 8
-* A factor vector of length 8, and 3 different factor levels: "seed", "pit", and "peel"
+* A fruit-themed character vector of length 8
+* A factor vector of length 8, with 3 different factor levels: "seed", "pit", and "peel"
 
-```{r }
+```{r}
 set.seed(7)
 
 Prob1_df = tibble(
   sample = rnorm(8),
   vec_logical = c(sample > 0), 
   vec_character = c("apple", "banana", "cherry", "date", "elderberry", "fig", "guava", "honeydew"),
-  vec_factor = factor(c("seed", "peel", "pit", "pit", "seed", "peel", "seed", "seed")),
+  vec_factor = factor(c("seed", "peel", "pit", "pit", "seed", "peel", "seed", "seed"))
 )
 ```
 
@@ -43,7 +43,7 @@ mean(pull(Prob1_df, vec_character))
 mean(pull(Prob1_df, vec_factor))
 ```
 
-The mean code only displays a result for the mean of the sample and logical vector. It does not display a mean for the character vector or factor vector, as they are not tied to numbers. 
+The code only displays a result for the mean of the sample and logical vector. It does not display a mean for the character vector or factor vector, as they are not tied to numbers, and therefore you cannot find their mean. 
 
 ## Convert Variables
 
@@ -54,22 +54,22 @@ as.numeric(pull(Prob1_df, vec_character))
 as.numeric(pull(Prob1_df, vec_factor))
 ```
 
-You can only convert the sample, logical vector, and factor vector variables from the data frame to numberic variables. The character variable could not be converted to numeric, as it did not consist of numbers, and did not have assigned numeric indices.
+You can only convert the sample, logical, and factor variables from the data frame to numeric variables. The character variable could not be converted to numeric, as it did not consist of numbers or and is not assigned numeric indicies. For that same reason, you can not take the mean of character variables, seen above. While you can not take the mean of a factor variable, you can convert it to a numeric variable, as each of the 3 levels were assigned numeric indices of 1, 2, or 3.
 
 ## Convert the Logical Vector
 
 ### The logical vector will be converted to:
 * A numeric vector, and multiply the random sample by the result
 * A factor vector, and multiply the random sample by the result
-* A factor vector, and the to a numeric vector, and multiply the random sample by the result
+* A factor vector, and then to a numeric vector, and multiply the random sample by the result
 
 ```{r}
 as.numeric(pull(Prob1_df, vec_logical))*(pull(Prob1_df, sample))
-
 as.factor(pull(Prob1_df, vec_logical))*(pull(Prob1_df, sample))
-
 as.numeric(as.factor(pull(Prob1_df, vec_logical)))*(pull(Prob1_df, sample))
 ```
+
+The product of the logical variable, converted to a factor variable, and the random sample did not produce a meaningful result. 
 
 
 # PROBLEM 2
@@ -83,13 +83,12 @@ Prob2_df = tibble(
   x = rnorm(500),
   y = rnorm(500),
   vec_log = c(x + y > 1),
-  vec_num = as.numeric(pull(Prob2_df, vec_log)),
-  vec_fac = as.factor(pull(Prob2_df, vec_log))
+  vec_num = as.numeric(vec_log),
+  vec_fac = as.factor(vec_log)
 )
-head(Prob2_df)
 ```
 
-## Vector Description
+### Vector Description
 * There are `r nrow(Prob2_df)` rows and `r ncol(Prob2_df)` columns in the dataset.
 * The mean of the sample of x is `r mean(pull(Prob2_df, x))`
 * The median of the sample of x is `r median(pull(Prob2_df, x))`
@@ -113,10 +112,10 @@ ggplot(Prob2_df, aes(x = x, y = y, color = vec_num)) + geom_point()
 ggplot(Prob2_df, aes(x = x, y = y, color = vec_fac)) + geom_point()
 ```
 
-The salmon dots on the scatterplots indicate false. The blue dots on the scatterplots indicate true.
+The scatterplots for the Logical and Factor variables are displayed with a binary color scale, with salmon dots indicating "false" and teal dots indicating "true." The scatterplot for the Numeric variable is displayed with a gradient color scale from 0 to 1, ranging from navy to light blue. This is reflective of the fact that the Numeric variable can take on a range of values between 0 to 1.  
 
 ## Export The Logical Scatterplot
-```{r yx_scatter_logical}}
+```{r yx_scatter_logical_save}
 ggsave("yx_scatter_logical.pdf")
 ```
 
